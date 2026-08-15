@@ -1,0 +1,1693 @@
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at 85% 0%,
+      rgba(37, 137, 218, 0.07),
+      transparent 28%
+    ),
+    #f4f8fc;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  width: 255px;
+  flex-shrink: 0;
+  padding: 22px 13px;
+  background: #ffffff;
+  border-right: 1px solid #d8e5f1;
+  box-shadow: 2px 0 14px rgba(24, 76, 120, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 10px 30px;
+}
+
+.brand-mark {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #087bd3, #1357bd);
+  color: white;
+  box-shadow: 0 6px 16px rgba(13, 106, 190, .22);
+}
+
+.brand-title {
+  color: #103b66;
+  font-size: 15px;
+  font-weight: 850;
+  letter-spacing: 1.5px;
+}
+
+.brand-subtitle {
+  margin-top: 3px;
+  color: #7c8fa4;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.sidebar-section {
+  margin-bottom: 20px;
+}
+
+.section-label {
+  padding: 0 12px 8px;
+  color: #92a2b3;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 1.3px;
+}
+
+.nav-item {
+  width: 100%;
+  height: 43px;
+  margin-bottom: 4px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #62758b;
+  cursor: pointer;
+  text-align: left;
+  transition: .15s ease;
+}
+
+.nav-item:hover {
+  color: #086dc1;
+  background: #eef7ff;
+}
+
+.nav-item.active {
+  color: #076abd;
+  background: #e8f4ff;
+  border-color: #c7e4fa;
+  font-weight: 750;
+  box-shadow: inset 3px 0 0 #087bd3;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+}
+
+.system-status {
+  margin: 14px 8px 0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #c9ecdf;
+  border-radius: 7px;
+  background: #edfbf6;
+  color: #15936e;
+  font-size: 9px;
+  font-weight: 750;
+}
+
+/* =========================================================
+   MAIN HEADER
+   ========================================================= */
+
+.main-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.topbar {
+  min-height: 82px;
+  padding: 17px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,.97);
+  border-bottom: 1px solid #d9e5ef;
+}
+
+.breadcrumb {
+  margin-bottom: 5px;
+  color: #7890a5;
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: 1.25px;
+}
+
+.topbar h1 {
+  margin: 0;
+  color: #142b45;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-button {
+  width: 38px;
+  height: 38px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  border: 1px solid #d6e3ef;
+  border-radius: 8px;
+  background: white;
+  color: #62778d;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  color: #086dc1;
+  border-color: #9ecbec;
+  background: #f2f8fe;
+}
+
+.notification span {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.user-profile {
+  margin-left: 8px;
+  padding-left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-left: 1px solid #dce5ef;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #e7f3ff;
+  border: 1px solid #c4e1f8;
+  color: #086bc0;
+  font-size: 10px;
+  font-weight: 850;
+}
+
+.user-name {
+  color: #253b53;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.user-role {
+  margin-top: 3px;
+  color: #8a9bad;
+  font-size: 8px;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.content {
+  width: 100%;
+  padding: 30px 34px 45px;
+}
+
+.page-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 23px;
+}
+
+.eyebrow {
+  margin-bottom: 6px;
+  color: #0876c9;
+  font-size: 8px;
+  font-weight: 850;
+  letter-spacing: 1.25px;
+}
+
+.page-intro h2 {
+  margin: 0;
+  color: #172d47;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.page-intro p {
+  margin: 7px 0 0;
+  color: #6e8298;
+  font-size: 11px;
+}
+
+.primary-button {
+  height: 41px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  border: 1px solid #086cc2;
+  border-radius: 7px;
+  background: linear-gradient(135deg, #087bd3, #125bc0);
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 5px 13px rgba(9, 108, 191, .17);
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   METRICS
+   ========================================================= */
+
+.metrics-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.metric-card {
+  min-height: 147px;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #d8e4ef;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(24, 72, 110, .045);
+}
+
+.metric-card::after {
+  content: "";
+  position: absolute;
+  width: 95px;
+  height: 95px;
+  right: -35px;
+  top: -35px;
+  border-radius: 50%;
+  background: rgba(19, 123, 211, .05);
+}
+
+.metric-card.red::after {
+  background: rgba(239, 68, 68, .055);
+}
+
+.metric-card.purple::after {
+  background: rgba(124, 86, 215, .06);
+}
+
+.metric-card.green::after {
+  background: rgba(21, 155, 118, .06);
+}
+
+.metric-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-icon {
+  width: 37px;
+  height: 37px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #e9f5ff;
+  color: #0878d1;
+}
+
+.metric-card.red .metric-icon {
+  background: #fff0f0;
+  color: #e34a4a;
+}
+
+.metric-card.purple .metric-icon {
+  background: #f1edff;
+  color: #7757d5;
+}
+
+.metric-card.green .metric-icon {
+  background: #eaf9f4;
+  color: #149674;
+}
+
+.metric-period {
+  padding: 4px 6px;
+  border-radius: 4px;
+  background: #f1f7fc;
+  color: #7c91a6;
+  font-size: 7px;
+  font-weight: 850;
+}
+
+.metric-label {
+  margin-top: 15px;
+  color: #71859a;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: .65px;
+  text-transform: uppercase;
+}
+
+.metric-value {
+  margin-top: 3px;
+  color: #172d47;
+  font-size: 27px;
+  font-weight: 850;
+}
+
+.metric-trend {
+  margin-top: 3px;
+  color: #14916f;
+  font-size: 8px;
+  font-weight: 750;
+}
+
+/* =========================================================
+   DASHBOARD GRID
+   ========================================================= */
+
+.dashboard-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(310px, .85fr);
+  gap: 17px;
+  align-items: stretch;
+}
+
+.dashboard-main {
+  min-width: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 13px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #172d47;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.section-heading p {
+  margin: 5px 0 0;
+  color: #74879b;
+  font-size: 10px;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  border: 1px solid #c9ecdf;
+  border-radius: 5px;
+  background: #effbf7;
+  color: #12916d;
+  font-size: 7px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.domain-card {
+  min-height: 187px;
+  position: relative;
+  padding: 18px;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid #d8e4ef;
+  border-radius: 10px;
+  color: #172d47;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(24, 72, 110, .045);
+  transition: .16s ease;
+}
+
+.domain-card:hover {
+  transform: translateY(-2px);
+  border-color: #83bfe8;
+  box-shadow: 0 9px 24px rgba(32, 102, 158, .1);
+}
+
+.domain-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.domain-icon {
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  background: #eaf5ff;
+  color: #0878d1;
+}
+
+.domain-card.purple .domain-icon {
+  background: #f1edff;
+  color: #7757d5;
+}
+
+.domain-card.green .domain-icon {
+  background: #eaf9f4;
+  color: #139775;
+}
+
+.domain-arrow {
+  color: #93a5b7;
+}
+
+.domain-content h3 {
+  margin: 18px 0 6px;
+  color: #1a3049;
+  font-size: 13px;
+}
+
+.domain-content p {
+  margin: 0;
+  color: #74879a;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.domain-content span {
+  display: inline-block;
+  margin-top: 14px;
+  color: #0877c9;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+/* =========================================================
+   SECURITY POSTURE
+   ========================================================= */
+
+.posture-card {
+  min-height: 250px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #d3e2ef;
+  border-top: 3px solid #0878d1;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(24, 72, 110, .06);
+}
+
+.posture-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.posture-header h3 {
+  margin: 0;
+  color: #172d47;
+  font-size: 14px;
+}
+
+.posture-header p {
+  margin: 4px 0 0;
+  color: #8192a4;
+  font-size: 9px;
+}
+
+.posture-score {
+  color: #0875c8;
+  font-size: 25px;
+  font-weight: 850;
+}
+
+.posture-score span {
+  color: #9aa9b8;
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.posture-progress {
+  height: 7px;
+  margin: 20px 0 9px;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e8eef4;
+}
+
+.posture-progress div {
+  width: 86%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    #087bd3,
+    #17a984
+  );
+}
+
+.posture-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #71859a;
+  font-size: 9px;
+}
+
+.posture-status strong {
+  color: #15936f;
+}
+
+.posture-items {
+  margin-top: 17px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.posture-item {
+  padding: 9px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #e3eaf1;
+  border-radius: 6px;
+  color: #6f8296;
+  font-size: 9px;
+}
+
+.posture-item strong {
+  margin-left: auto;
+  color: #243a52;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.status-dot.green {
+  background: #16a37d;
+}
+
+.status-dot.red {
+  background: #e54848;
+}
+
+.status-dot.orange {
+  background: #ef941d;
+}
+
+.status-dot.yellow {
+  background: #d9ad23;
+}
+
+.posture-button {
+  width: 100%;
+  height: 34px;
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid #c6dced;
+  border-radius: 6px;
+  background: #f3f8fd;
+  color: #0874c5;
+  font-size: 8px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.posture-button:hover {
+  background: #e8f4fd;
+  border-color: #9bc8e9;
+}
+
+/* =========================================================
+   INSIGHTS
+   ========================================================= */
+
+.insights-heading {
+  margin-top: 26px;
+}
+
+.text-button {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  border: 0;
+  background: transparent;
+  color: #0875c8;
+  font-size: 9px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.insight-card {
+  min-height: 105px;
+  padding: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  background: #ffffff;
+  border: 1px solid #dce6ef;
+  border-radius: 9px;
+  box-shadow: 0 2px 8px rgba(24, 72, 110, .035);
+}
+
+.insight-icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+}
+
+.insight-card.blue .insight-icon {
+  background: #eaf5ff;
+  color: #0878d1;
+}
+
+.insight-card.purple .insight-icon {
+  background: #f1edff;
+  color: #7655d3;
+}
+
+.insight-card.green .insight-icon {
+  background: #eaf9f4;
+  color: #159775;
+}
+
+.insight-card.orange .insight-icon {
+  background: #fff4e5;
+  color: #dc8b19;
+}
+
+.insight-title {
+  color: #718499;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.insight-value {
+  margin-top: 2px;
+  color: #172d47;
+  font-size: 19px;
+  font-weight: 850;
+}
+
+.insight-description {
+  margin-top: 3px;
+  color: #8999a9;
+  font-size: 7px;
+  line-height: 1.45;
+}
+
+/* =========================================================
+   ACTIVITY
+   ========================================================= */
+
+.recent-heading {
+  margin-top: 27px;
+}
+
+.activity-table {
+  width: 100%;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #d7e3ed;
+  border-radius: 9px;
+  box-shadow: 0 3px 10px rgba(24, 72, 110, .04);
+}
+
+.activity-header,
+.activity-row {
+  display: grid;
+  grid-template-columns: 110px minmax(180px, 1fr) 100px 120px 100px 110px;
+  gap: 16px;
+  align-items: center;
+  padding: 0 18px;
+}
+
+.activity-header {
+  min-height: 39px;
+  background: #f5f9fc;
+  border-bottom: 1px solid #dfe8ef;
+  color: #8192a4;
+  font-size: 7px;
+  font-weight: 850;
+  letter-spacing: .7px;
+}
+
+.activity-row {
+  min-height: 56px;
+  border-bottom: 1px solid #edf1f5;
+  color: #263d55;
+  font-size: 9px;
+}
+
+.activity-row:last-child {
+  border-bottom: 0;
+}
+
+.activity-row:hover {
+  background: #f9fcff;
+}
+
+.scan-id {
+  color: #0877c9;
+  font-weight: 850;
+}
+
+.target {
+  font-weight: 700;
+}
+
+.type-badge {
+  padding: 4px 7px;
+  display: inline-block;
+  border: 1px solid #d3e0eb;
+  border-radius: 4px;
+  background: #f6f9fc;
+  color: #62768b;
+  font-size: 7px;
+  font-weight: 850;
+}
+
+.status-badge {
+  padding: 5px 8px;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 7px;
+  font-weight: 850;
+}
+
+.status-badge.completed {
+  background: #e8f8f2;
+  color: #128d6a;
+}
+
+.status-badge.running {
+  background: #e8f4ff;
+  color: #0876c7;
+}
+
+.risk-badge {
+  padding: 4px 7px;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 7px;
+  font-weight: 850;
+}
+
+.risk-badge.high {
+  background: #fff0ef;
+  color: #d84242;
+}
+
+.risk-badge.medium {
+  background: #fff5e6;
+  color: #d58718;
+}
+
+.risk-badge.low {
+  background: #eaf9f4;
+  color: #138d6b;
+}
+
+.risk-badge.critical {
+  background: #ffe6e6;
+  color: #c92f2f;
+}
+
+.activity-time {
+  color: #8a9aaa;
+}
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.module-placeholder {
+  min-height: 620px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #d6e4ef;
+  border-top: 3px solid #0878d1;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(24, 72, 110, .05);
+}
+
+.placeholder-icon {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #eaf5ff;
+  color: #0878d1;
+}
+
+.module-placeholder h2 {
+  margin: 0;
+  color: #172d47;
+  font-size: 22px;
+}
+
+.module-placeholder p {
+  margin: 8px 0 22px;
+  color: #74879b;
+  font-size: 11px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1250px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .posture-card {
+    min-height: auto;
+  }
+
+  .insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .domain-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .brand-title,
+  .brand-subtitle,
+  .nav-item span,
+  .section-label,
+  .system-status span {
+    display: none;
+  }
+
+  .brand {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .nav-item {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .topbar {
+    padding: 16px 20px;
+  }
+
+  .user-profile {
+    display: none;
+  }
+
+  .page-intro {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-header {
+    display: none;
+  }
+
+  .activity-row {
+    grid-template-columns: 90px 1fr 70px;
+    padding: 12px;
+  }
+
+  .activity-row > :nth-child(4),
+  .activity-row > :nth-child(5),
+  .activity-row > :nth-child(6) {
+    display: none;
+  }
+}
+
+/* ============================================================
+   CALIX SECURITY INTELLIGENCE PLATFORM
+   Enterprise Typography & Readability Enhancement
+   ============================================================ */
+
+/* Global readability */
+body {
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+
+/* Main navigation / sidebar */
+nav,
+aside {
+  font-size: 14px !important;
+}
+
+nav a,
+aside a,
+nav button,
+aside button {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+nav span,
+aside span {
+  font-size: inherit;
+}
+
+/* Main page headings */
+h1 {
+  font-size: 24px !important;
+  line-height: 1.25 !important;
+  font-weight: 700 !important;
+}
+
+h2 {
+  font-size: 19px !important;
+  line-height: 1.35 !important;
+  font-weight: 700 !important;
+}
+
+h3 {
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+  font-weight: 650 !important;
+}
+
+h4 {
+  font-size: 15px !important;
+}
+
+/* Paragraphs and descriptions */
+p {
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+}
+
+/* Enterprise dashboard cards */
+[class*="card"] {
+  font-size: 14px;
+}
+
+[class*="card"] h1,
+[class*="card"] h2,
+[class*="card"] h3,
+[class*="card"] h4 {
+  font-size: 15px !important;
+}
+
+[class*="card"] p {
+  font-size: 13px !important;
+}
+
+/* KPI / metric values */
+[class*="metric"],
+[class*="kpi"],
+[class*="stat"] {
+  font-size: 14px;
+}
+
+[class*="metric"] strong,
+[class*="metric"] b,
+[class*="kpi"] strong,
+[class*="kpi"] b,
+[class*="stat"] strong,
+[class*="stat"] b {
+  font-size: 28px !important;
+  line-height: 1.2 !important;
+}
+
+/* Buttons */
+button {
+  font-size: 13.5px !important;
+  line-height: 1.4 !important;
+}
+
+button svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Inputs / selects */
+input,
+select,
+textarea {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-size: 13px !important;
+}
+
+/* Tables */
+table {
+  font-size: 13.5px !important;
+}
+
+thead th {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em;
+}
+
+tbody td {
+  font-size: 13.5px !important;
+  line-height: 1.5 !important;
+}
+
+/* Table links / IDs */
+table a {
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+}
+
+/* Status / severity badges */
+[class*="badge"],
+[class*="status"],
+[class*="severity"] {
+  font-size: 11.5px !important;
+  font-weight: 650 !important;
+  line-height: 1.4 !important;
+}
+
+/* Small labels */
+small {
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+}
+
+/* Dashboard section labels */
+[class*="section"] {
+  line-height: 1.5;
+}
+
+/* Better spacing for readable enterprise UI */
+main {
+  font-size: 15px;
+}
+
+main section {
+  margin-bottom: 20px;
+}
+
+/* Better card readability */
+main article {
+  line-height: 1.5;
+}
+
+main article p {
+  margin-top: 5px;
+}
+
+/* ============================================================
+   RESPONSIVE TYPOGRAPHY
+   ============================================================ */
+
+@media (max-width: 1200px) {
+  body {
+    font-size: 14.5px !important;
+  }
+
+  h1 {
+    font-size: 22px !important;
+  }
+
+  h2 {
+    font-size: 18px !important;
+  }
+
+  h3 {
+    font-size: 15px !important;
+  }
+
+  p {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px !important;
+  }
+
+  h1 {
+    font-size: 21px !important;
+  }
+
+  h2 {
+    font-size: 17px !important;
+  }
+
+  h3 {
+    font-size: 15px !important;
+  }
+
+  p {
+    font-size: 13px !important;
+  }
+
+  button {
+    font-size: 13px !important;
+  }
+
+  table {
+    font-size: 13px !important;
+  }
+
+  tbody td {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px !important;
+  }
+
+  h1 {
+    font-size: 20px !important;
+  }
+
+  h2 {
+    font-size: 16px !important;
+  }
+
+  h3 {
+    font-size: 14px !important;
+  }
+
+  p {
+    font-size: 12.5px !important;
+  }
+
+  button {
+    font-size: 12.5px !important;
+  }
+}
+
+
+/* ============================================================
+   CALIX SECURITY INTELLIGENCE PLATFORM
+   READABILITY V2 — ENTERPRISE TYPOGRAPHY
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   Global typography
+   ------------------------------------------------------------ */
+
+body {
+  color: #17324d !important;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Main content */
+main {
+  color: #17324d !important;
+  font-size: 15px !important;
+}
+
+/* ------------------------------------------------------------
+   Main headings
+   ------------------------------------------------------------ */
+
+main h1 {
+  color: #102a43 !important;
+  font-size: 25px !important;
+  font-weight: 750 !important;
+  line-height: 1.25 !important;
+}
+
+main h2 {
+  color: #163a5f !important;
+  font-size: 19px !important;
+  font-weight: 750 !important;
+  line-height: 1.35 !important;
+}
+
+main h3 {
+  color: #173b5f !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.4 !important;
+}
+
+main h4 {
+  color: #234a6d !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+}
+
+/* ------------------------------------------------------------
+   Section headings
+   ------------------------------------------------------------ */
+
+main section h1,
+main section h2,
+main section h3,
+main section h4 {
+  color: #173b5f !important;
+}
+
+/* ------------------------------------------------------------
+   Paragraphs / descriptions
+   ------------------------------------------------------------ */
+
+main p {
+  color: #4a6680 !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+}
+
+/* Secondary descriptions */
+main p[class*="text"] {
+  color: #4a6680 !important;
+}
+
+/* ------------------------------------------------------------
+   Card text
+   ------------------------------------------------------------ */
+
+main article {
+  color: #17324d !important;
+}
+
+main article h1,
+main article h2,
+main article h3,
+main article h4 {
+  color: #173b5f !important;
+}
+
+main article p {
+  color: #526f88 !important;
+  font-size: 13.5px !important;
+}
+
+/* Card labels */
+main article span {
+  color: #365570;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ------------------------------------------------------------
+   Security Posture
+   Make Critical / High / Medium / Low clearly readable
+   ------------------------------------------------------------ */
+
+main [class*="posture"] {
+  color: #17324d !important;
+}
+
+/* Posture labels */
+main [class*="posture"] span,
+main [class*="posture"] p {
+  color: #35536d !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+
+/* Overall posture */
+main [class*="posture"] strong {
+  color: #008f68 !important;
+  font-size: 18px !important;
+  font-weight: 750 !important;
+}
+
+/* Risk numbers */
+main [class*="posture"] b {
+  color: #17324d !important;
+  font-size: 14px !important;
+  font-weight: 750 !important;
+}
+
+/* ------------------------------------------------------------
+   Security Intelligence cards
+   ------------------------------------------------------------ */
+
+main section span {
+  font-size: 13px;
+}
+
+/* Intelligence card titles */
+main section strong {
+  color: #234967 !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+}
+
+/* Intelligence card values */
+main section strong[class*="value"],
+main section [class*="value"] {
+  color: #123b61 !important;
+  font-size: 27px !important;
+  font-weight: 800 !important;
+}
+
+/* ------------------------------------------------------------
+   KPI numbers
+   ------------------------------------------------------------ */
+
+main [class*="kpi"] strong,
+main [class*="metric"] strong,
+main [class*="stat"] strong {
+  color: #123b61 !important;
+  font-size: 30px !important;
+  font-weight: 800 !important;
+}
+
+/* KPI labels */
+main [class*="kpi"] span,
+main [class*="metric"] span,
+main [class*="stat"] span {
+  color: #3e5d76 !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+}
+
+/* ------------------------------------------------------------
+   General spans
+   ------------------------------------------------------------ */
+
+main span {
+  color: #35536d;
+}
+
+/* Don't make icon SVGs larger */
+main svg {
+  flex-shrink: 0;
+}
+
+/* ------------------------------------------------------------
+   Tables — major readability improvement
+   ------------------------------------------------------------ */
+
+main table {
+  width: 100%;
+  color: #17324d !important;
+  font-size: 14px !important;
+}
+
+main thead th {
+  color: #34536d !important;
+  font-size: 12.5px !important;
+  font-weight: 750 !important;
+  letter-spacing: 0.035em !important;
+  text-transform: uppercase;
+}
+
+main tbody td {
+  color: #274760 !important;
+  font-size: 14px !important;
+  font-weight: 550 !important;
+  line-height: 1.6 !important;
+}
+
+/* Scan IDs */
+main tbody td:first-child {
+  color: #0072c6 !important;
+  font-weight: 750 !important;
+}
+
+/* Target names */
+main tbody td:nth-child(2) {
+  color: #193e5c !important;
+  font-weight: 650 !important;
+}
+
+/* ------------------------------------------------------------
+   Badges
+   ------------------------------------------------------------ */
+
+main [class*="badge"] {
+  font-size: 12px !important;
+  font-weight: 750 !important;
+  line-height: 1.5 !important;
+  padding: 3px 8px !important;
+}
+
+/* ------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------ */
+
+main button {
+  color: #ffffff;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+}
+
+main button svg {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* ------------------------------------------------------------
+   Sidebar
+   ------------------------------------------------------------ */
+
+aside,
+nav {
+  color: #234967 !important;
+}
+
+aside a,
+nav a {
+  color: #355570 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+aside a:hover,
+nav a:hover {
+  color: #0072c6 !important;
+}
+
+/* Active navigation */
+aside a[aria-current="page"],
+nav a[aria-current="page"] {
+  color: #006fc9 !important;
+  font-weight: 750 !important;
+}
+
+/* ------------------------------------------------------------
+   Small labels
+   ------------------------------------------------------------ */
+
+main small {
+  color: #557189 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+}
+
+/* ------------------------------------------------------------
+   Form controls
+   ------------------------------------------------------------ */
+
+input,
+select,
+textarea {
+  color: #17324d !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #71879a !important;
+  font-size: 13px !important;
+}
+
+/* ------------------------------------------------------------
+   Links
+   ------------------------------------------------------------ */
+
+main a {
+  color: #0072c6;
+  font-weight: 650;
+}
+
+main a:hover {
+  color: #005a9c;
+}
+
+/* ------------------------------------------------------------
+   Enterprise blue section divider
+   ------------------------------------------------------------ */
+
+main section {
+  border-color: #d3e4f2;
+}
+
+/* ------------------------------------------------------------
+   Responsive typography
+   ------------------------------------------------------------ */
+
+@media (max-width: 1200px) {
+
+  main h1 {
+    font-size: 23px !important;
+  }
+
+  main h2 {
+    font-size: 18px !important;
+  }
+
+  main h3 {
+    font-size: 15.5px !important;
+  }
+
+  main p {
+    font-size: 13.5px !important;
+  }
+
+  main tbody td {
+    font-size: 13.5px !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  body {
+    font-size: 14px !important;
+  }
+
+  main h1 {
+    font-size: 21px !important;
+  }
+
+  main h2 {
+    font-size: 17px !important;
+  }
+
+  main h3 {
+    font-size: 15px !important;
+  }
+
+  main p {
+    font-size: 13px !important;
+  }
+
+  main table {
+    font-size: 13px !important;
+  }
+
+  main tbody td {
+    font-size: 13px !important;
+  }
+
+  main button {
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  main h1 {
+    font-size: 20px !important;
+  }
+
+  main h2 {
+    font-size: 16px !important;
+  }
+
+  main h3 {
+    font-size: 14px !important;
+  }
+
+  main p {
+    font-size: 12.5px !important;
+  }
+
+  main tbody td {
+    font-size: 12.5px !important;
+  }
+}
+

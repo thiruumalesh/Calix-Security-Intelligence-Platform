@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 
 import "./App.css";
+import ApiDast from "./pages/ApiDast";
 
 type ActivityRow = {
   id: string;
@@ -30,6 +31,8 @@ type ActivityRow = {
   risk: "High" | "Medium" | "Low" | "—";
   time: string;
 };
+
+type Page = "overview" | "api-dast";
 
 const activityRows: ActivityRow[] = [
   {
@@ -68,6 +71,12 @@ const activityRows: ActivityRow[] = [
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState<Page>("overview");
+
+  const navigateTo = (page: Page) => {
+    setCurrentPage(page);
+    setSidebarOpen(false);
+  };
 
   return (
     <div className="app-shell">
@@ -105,14 +114,24 @@ function App() {
         <nav className="sidebar-nav">
           <div className="nav-section-label">PLATFORM</div>
 
-          <button className="nav-item active">
+          <button
+            className={`nav-item ${
+              currentPage === "overview" ? "active" : ""
+            }`}
+            onClick={() => navigateTo("overview")}
+          >
             <Grid2X2 size={21} />
             <span>Security Overview</span>
           </button>
 
           <div className="nav-section-label">SECURITY TESTING</div>
 
-          <button className="nav-item">
+          <button
+            className={`nav-item ${
+              currentPage === "api-dast" ? "active" : ""
+            }`}
+            onClick={() => navigateTo("api-dast")}
+          >
             <ShieldCheck size={21} />
             <span>API / DAST</span>
           </button>
@@ -170,7 +189,12 @@ function App() {
               <div className="breadcrumb">
                 CALIX / SECURITY INTELLIGENCE PLATFORM
               </div>
-              <h1>Security Overview</h1>
+
+              <h1>
+                {currentPage === "overview"
+                  ? "Security Overview"
+                  : "API / DAST"}
+              </h1>
             </div>
           </div>
 
@@ -179,13 +203,17 @@ function App() {
               <Search size={21} />
             </button>
 
-            <button className="header-icon notification" aria-label="Notifications">
+            <button
+              className="header-icon notification"
+              aria-label="Notifications"
+            >
               <Bell size={21} />
               <span />
             </button>
 
             <div className="user-profile">
               <div className="avatar">SE</div>
+
               <div className="user-copy">
                 <strong>Security Engineering</strong>
                 <small>CALIX ENTERPRISE</small>
@@ -195,196 +223,214 @@ function App() {
         </header>
 
         <main className="content">
-          {/* Page introduction */}
-          <section className="page-intro">
-            <div>
-              <div className="eyebrow">ENTERPRISE SECURITY OPERATIONS</div>
+          {currentPage === "overview" ? (
+            <>
+              {/* Page introduction */}
+              <section className="page-intro">
+                <div>
+                  <div className="eyebrow">
+                    ENTERPRISE SECURITY OPERATIONS
+                  </div>
 
-              <h2>Security Operations Center</h2>
+                  <h2>Security Operations Center</h2>
 
-              <p>
-                Unified security visibility across applications, APIs, mobile
-                platforms and network infrastructure.
-              </p>
-            </div>
+                  <p>
+                    Unified security visibility across applications, APIs,
+                    mobile platforms and network infrastructure.
+                  </p>
+                </div>
 
-            <button className="primary-button">
-              <Plus size={20} />
-              New Security Assessment
-            </button>
-          </section>
+                <button className="primary-button">
+                  <Plus size={20} />
+                  New Security Assessment
+                </button>
+              </section>
 
-          {/* Overview metrics */}
-          <section className="overview-grid">
-            <MetricCard
-              icon={<Activity size={24} />}
-              iconClass="blue"
-              label="ACTIVE ASSESSMENTS"
-              value="03"
-              detail="+1 this week"
-            />
-
-            <MetricCard
-              icon={<AlertTriangle size={24} />}
-              iconClass="red"
-              label="OPEN FINDINGS"
-              value="42"
-              detail="08 high priority"
-            />
-
-            <MetricCard
-              icon={<Layers3 size={24} />}
-              iconClass="purple"
-              label="ASSETS MONITORED"
-              value="186"
-              detail="+14 this month"
-            />
-
-            <MetricCard
-              icon={<CircleDot size={24} />}
-              iconClass="green"
-              label="SECURITY COVERAGE"
-              value="94%"
-              detail="+6.2% this quarter"
-            />
-          </section>
-
-          {/* Testing domains + posture */}
-          <section className="domains-layout">
-            <div className="domains-section">
-              <SectionHeading
-                title="Security Testing Domains"
-                description="Select a security capability to begin an assessment."
-              />
-
-              <div className="engine-badge">
-                <span className="status-dot" />
-                ENGINE ONLINE
-              </div>
-
-              <div className="domain-grid">
-                <DomainCard
-                  type="blue"
-                  icon={<ShieldCheck size={26} />}
-                  title="API / DAST"
-                  description="Dynamic application and API security testing"
-                  footer="121 endpoints monitored"
+              {/* Overview metrics */}
+              <section className="overview-grid">
+                <MetricCard
+                  icon={<Activity size={24} />}
+                  iconClass="blue"
+                  label="ACTIVE ASSESSMENTS"
+                  value="03"
+                  detail="+1 this week"
                 />
 
-                <DomainCard
-                  type="purple"
-                  icon={<Smartphone size={26} />}
-                  title="MAST"
-                  description="Android and iOS mobile application testing"
-                  footer="18 applications assessed"
+                <MetricCard
+                  icon={<AlertTriangle size={24} />}
+                  iconClass="red"
+                  label="OPEN FINDINGS"
+                  value="42"
+                  detail="08 high priority"
                 />
 
-                <DomainCard
-                  type="green"
-                  icon={<Network size={26} />}
-                  title="Network Pentest"
-                  description="Network infrastructure and perimeter assessment"
-                  footer="47 assets monitored"
+                <MetricCard
+                  icon={<Layers3 size={24} />}
+                  iconClass="purple"
+                  label="ASSETS MONITORED"
+                  value="186"
+                  detail="+14 this month"
                 />
-              </div>
-            </div>
 
-            <SecurityPosture />
-          </section>
+                <MetricCard
+                  icon={<CircleDot size={24} />}
+                  iconClass="green"
+                  label="SECURITY COVERAGE"
+                  value="94%"
+                  detail="+6.2% this quarter"
+                />
+              </section>
 
-          {/* Security intelligence */}
-          <section className="intelligence-section">
-            <SectionHeading
-              title="Security Intelligence"
-              description="Current platform activity and security posture."
-              action="View intelligence"
-            />
+              {/* Testing domains + posture */}
+              <section className="domains-layout">
+                <div className="domains-section">
+                  <SectionHeading
+                    title="Security Testing Domains"
+                    description="Select a security capability to begin an assessment."
+                  />
 
-            <div className="intelligence-grid">
-              <IntelligenceCard
-                type="purple"
-                icon={<Sparkles size={24} />}
-                label="AI Security Analysis"
-                metric="87%"
-                description="Findings validated with AI-assisted analysis"
-              />
+                  <div className="engine-badge">
+                    <span className="status-dot" />
+                    ENGINE ONLINE
+                  </div>
 
-              <IntelligenceCard
-                type="orange"
-                icon={<AlertTriangle size={24} />}
-                label="Priority Risk"
-                metric="08"
-                description="High-priority findings require attention"
-              />
+                  <div className="domain-grid">
+                    <button
+                      className="domain-card-button"
+                      onClick={() => navigateTo("api-dast")}
+                    >
+                      <DomainCard
+                        type="blue"
+                        icon={<ShieldCheck size={26} />}
+                        title="API / DAST"
+                        description="Dynamic application and API security testing"
+                        footer="121 endpoints monitored"
+                      />
+                    </button>
 
-              <IntelligenceCard
-                type="green"
-                icon={<CheckCircle2 size={24} />}
-                label="Remediation Progress"
-                metric="76%"
-                description="Security findings successfully remediated"
-              />
+                    <DomainCard
+                      type="purple"
+                      icon={<Smartphone size={26} />}
+                      title="MAST"
+                      description="Android and iOS mobile application testing"
+                      footer="18 applications assessed"
+                    />
 
-              <IntelligenceCard
-                type="blue"
-                icon={<Clock3 size={24} />}
-                label="Avg. Scan Time"
-                metric="18m"
-                description="Average assessment execution time"
-              />
-            </div>
-          </section>
+                    <DomainCard
+                      type="green"
+                      icon={<Network size={26} />}
+                      title="Network Pentest"
+                      description="Network infrastructure and perimeter assessment"
+                      footer="47 assets monitored"
+                    />
+                  </div>
+                </div>
 
-          {/* Recent activity */}
-          <section className="activity-section">
-            <SectionHeading
-              title="Recent Security Activity"
-              description="Latest assessment activity across the platform."
-              action="View all"
-            />
+                <SecurityPosture />
+              </section>
 
-            <div className="activity-table-wrapper">
-              <table className="activity-table">
-                <thead>
-                  <tr>
-                    <th>SCAN ID</th>
-                    <th>TARGET</th>
-                    <th>TYPE</th>
-                    <th>STATUS</th>
-                    <th>RISK</th>
-                    <th>TIME</th>
-                  </tr>
-                </thead>
+              {/* Security intelligence */}
+              <section className="intelligence-section">
+                <SectionHeading
+                  title="Security Intelligence"
+                  description="Current platform activity and security posture."
+                  action="View intelligence"
+                />
 
-                <tbody>
-                  {activityRows.map((row) => (
-                    <tr key={row.id}>
-                      <td className="scan-id">{row.id}</td>
-                      <td className="target-cell">{row.target}</td>
-                      <td>
-                        <span className="type-tag">{row.type}</span>
-                      </td>
-                      <td>
-                        <span
-                          className={`status-tag ${
-                            row.status === "Running"
-                              ? "status-running"
-                              : "status-completed"
-                          }`}
-                        >
-                          {row.status}
-                        </span>
-                      </td>
-                      <td>
-                        <RiskBadge risk={row.risk} />
-                      </td>
-                      <td className="time-cell">{row.time}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </section>
+                <div className="intelligence-grid">
+                  <IntelligenceCard
+                    type="purple"
+                    icon={<Sparkles size={24} />}
+                    label="AI Security Analysis"
+                    metric="87%"
+                    description="Findings validated with AI-assisted analysis"
+                  />
+
+                  <IntelligenceCard
+                    type="orange"
+                    icon={<AlertTriangle size={24} />}
+                    label="Priority Risk"
+                    metric="08"
+                    description="High-priority findings require attention"
+                  />
+
+                  <IntelligenceCard
+                    type="green"
+                    icon={<CheckCircle2 size={24} />}
+                    label="Remediation Progress"
+                    metric="76%"
+                    description="Security findings successfully remediated"
+                  />
+
+                  <IntelligenceCard
+                    type="blue"
+                    icon={<Clock3 size={24} />}
+                    label="Avg. Scan Time"
+                    metric="18m"
+                    description="Average assessment execution time"
+                  />
+                </div>
+              </section>
+
+              {/* Recent activity */}
+              <section className="activity-section">
+                <SectionHeading
+                  title="Recent Security Activity"
+                  description="Latest assessment activity across the platform."
+                  action="View all"
+                />
+
+                <div className="activity-table-wrapper">
+                  <table className="activity-table">
+                    <thead>
+                      <tr>
+                        <th>SCAN ID</th>
+                        <th>TARGET</th>
+                        <th>TYPE</th>
+                        <th>STATUS</th>
+                        <th>RISK</th>
+                        <th>TIME</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      {activityRows.map((row) => (
+                        <tr key={row.id}>
+                          <td className="scan-id">{row.id}</td>
+
+                          <td className="target-cell">{row.target}</td>
+
+                          <td>
+                            <span className="type-tag">{row.type}</span>
+                          </td>
+
+                          <td>
+                            <span
+                              className={`status-tag ${
+                                row.status === "Running"
+                                  ? "status-running"
+                                  : "status-completed"
+                              }`}
+                            >
+                              {row.status}
+                            </span>
+                          </td>
+
+                          <td>
+                            <RiskBadge risk={row.risk} />
+                          </td>
+
+                          <td className="time-cell">{row.time}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </>
+          ) : (
+            <ApiDast />
+          )}
         </main>
       </div>
     </div>
@@ -530,8 +576,12 @@ function IntelligenceCard({
 
       <div className="intelligence-content">
         <div className="intelligence-label">{label}</div>
+
         <div className="intelligence-metric">{metric}</div>
-        <div className="intelligence-description">{description}</div>
+
+        <div className="intelligence-description">
+          {description}
+        </div>
       </div>
     </article>
   );
@@ -542,7 +592,11 @@ function RiskBadge({ risk }: { risk: ActivityRow["risk"] }) {
     return <span className="risk-empty">—</span>;
   }
 
-  return <span className={`risk-badge risk-${risk.toLowerCase()}`}>{risk}</span>;
+  return (
+    <span className={`risk-badge risk-${risk.toLowerCase()}`}>
+      {risk}
+    </span>
+  );
 }
 
 function SectionHeading({

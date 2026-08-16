@@ -409,3 +409,84 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================================
+   CALIXAI REMEDIATION
+   ========================================================= */
+
+.calixai-remediation {
+  margin-top: 24px;
+  padding: 22px;
+  border: 1px solid #bfe3ce;
+  border-radius: 12px;
+  background: #f1fbf5;
+}
+
+.calixai-remediation-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.calixai-remediation-header span {
+  display: block;
+  color: #18794e;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.calixai-remediation-header h4 {
+  margin: 0;
+  color: #123f2b;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.calixai-remediation-summary {
+  margin: 0 0 18px;
+  color: #284d3a;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.calixai-remediation-actions {
+  padding-top: 16px;
+  border-top: 1px solid #cfe8d9;
+}
+
+.calixai-remediation-actions strong {
+  display: block;
+  margin-bottom: 12px;
+  color: #164f35;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.calixai-remediation-actions ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.calixai-remediation-actions li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #294b3a;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.calixai-remediation-actions li svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  color: #188653;
+}

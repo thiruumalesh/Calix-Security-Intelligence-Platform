@@ -22,6 +22,7 @@ import {
 
 import "./App.css";
 import ApiDast from "./pages/ApiDast";
+import Mast from "./pages/Mast";
 
 type ActivityRow = {
   id: string;
@@ -32,7 +33,7 @@ type ActivityRow = {
   time: string;
 };
 
-type Page = "overview" | "api-dast";
+type Page = "overview" | "api-dast" | "mast";
 
 const activityRows: ActivityRow[] = [
   {
@@ -136,7 +137,12 @@ function App() {
             <span>API / DAST</span>
           </button>
 
-          <button className="nav-item">
+          <button
+            className={`nav-item ${
+              currentPage === "mast" ? "active" : ""
+            }`}
+            onClick={() => navigateTo("mast")}
+          >
             <Smartphone size={21} />
             <span>MAST</span>
           </button>
@@ -193,7 +199,9 @@ function App() {
               <h1>
                 {currentPage === "overview"
                   ? "Security Overview"
-                  : "API / DAST"}
+                  : currentPage === "api-dast"
+                    ? "API / DAST"
+                    : "MAST"}
               </h1>
             </div>
           </div>
@@ -308,13 +316,18 @@ function App() {
                       />
                     </button>
 
-                    <DomainCard
-                      type="purple"
-                      icon={<Smartphone size={26} />}
-                      title="MAST"
-                      description="Android and iOS mobile application testing"
-                      footer="18 applications assessed"
-                    />
+                    <button
+                      className="domain-card-button"
+                      onClick={() => navigateTo("mast")}
+                    >
+                      <DomainCard
+                        type="purple"
+                        icon={<Smartphone size={26} />}
+                        title="MAST"
+                        description="Android and iOS mobile application testing"
+                        footer="18 applications assessed"
+                      />
+                    </button>
 
                     <DomainCard
                       type="green"
@@ -428,8 +441,10 @@ function App() {
                 </div>
               </section>
             </>
-          ) : (
+          ) : currentPage === "api-dast" ? (
             <ApiDast />
+          ) : (
+            <Mast />
           )}
         </main>
       </div>
